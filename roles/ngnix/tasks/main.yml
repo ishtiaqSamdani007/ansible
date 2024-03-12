@@ -1,0 +1,14 @@
+---
+- name: install ngnix
+  apt: name=ngnix state=present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: install ngnix
+  yum: name=ngnix state=present
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: start ngnix
+  service: name=ngnix state=started
+  become: true

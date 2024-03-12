@@ -1,0 +1,19 @@
+all:
+  hosts:
+    host1:
+      ansible_host: 34.16.200.190
+      ansible_user: ishts
+      ansible_ssh_private_key_file: ~/.ssh/gce
+    host2:
+      ansible_host: 34.125.33.65
+      ansible_user: ishts
+      ansible_ssh_private_key_file: ~/.ssh/gce
+  children:
+    webservers:
+      hosts:
+        host1:
+        host2:
+    # dbservers:
+    #   hosts:
+    #     host1:
+    #     host2:
