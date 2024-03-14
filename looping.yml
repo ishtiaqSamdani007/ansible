@@ -1,0 +1,35 @@
+---
+- name: Install packages using variables and loops with_items
+  hosts: all
+  become: yes
+  vars:
+    packages_to_install:
+      - nginx
+      - python3
+      - ncdu
+
+  tasks:
+    - name: Install packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages_to_install }}"
+
+# ---
+# - name: Install packages using loops
+#   hosts: your_host_group
+#   become: yes
+
+#   vars:
+#     packages_to_install:
+#       - package1
+#       - package2
+#       - package3
+#       - package4
+
+#   tasks:
+#     - name: Install packages
+#       package:
+#         name: "{{ item }}"
+#         state: present
+#       loop: "{{ packages_to_install }}"
